@@ -1,23 +1,3 @@
-#Loading Data -> 
-# Understanding Dataset (columns, datatypes, target variable) -> 
-# Checking Duplicates -> Checking Missing Values (NaN) -> 
-# Performing EDA & Visualization -> 
-# Handling Missing Values (Mean/Median/Mode) -> 
-# Detecting & Handling Outliers -> 
-# Feature Engineering (Date features, trends, etc.) -> means 
-# Encoding Categorical Data -> 
-# Feature Scaling (if required) -> 
-# Feature Selection -> 
-# Splitting Data (Train/Test) -> 
-# Model Selection ->
-#  Model Training -> 
-# Hyperparameter Tuning -> 
-# Model Evaluation (MAE, RMSE, R²) ->
-#  Saving Model, Encoder & Scaler ->
-#  Building Prediction Pipeline -> Streamlit Dashboard/Deployment
-
-
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -27,7 +7,6 @@ from sklearn.linear_model import LogisticRegression
 import joblib
 from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
 from sklearn.model_selection import RandomizedSearchCV 
-
 from xgboost import XGBClassifier
 
 
@@ -49,17 +28,17 @@ df['TotalCharges'].fillna(df['TotalCharges'].median(),inplace=True)
 
 
 # #EDA
-# sns.countplot(x='Churn',data=df)
-# plt.show()
+sns.countplot(x='Churn',data=df)
+plt.show()
 
-# sns.countplot(x='Contract',hue='Churn',data=df)
-# plt.show()
+sns.countplot(x='Contract',hue='Churn',data=df)
+plt.show()
 
-# sns.boxplot(x='Churn',y='tenure',data=df)
-# plt.show()
+sns.boxplot(x='Churn',y='tenure',data=df)
+plt.show()
 
-# sns.boxplot(x='Churn',y='MonthlyCharges',data=df)
-# plt.show()
+sns.boxplot(x='Churn',y='MonthlyCharges',data=df)
+plt.show()
 
 
 #encoding 
@@ -69,14 +48,13 @@ for col in cat_col:
     le=LabelEncoder() 
     df[col]=le.fit_transform(df[col])
     encoders[col]=le
-
 le_churn = LabelEncoder()
 df['Churn'] = le_churn.fit_transform(df['Churn'])
 
 #correlation
-# plt.figure(figsize=(12,8))
-# sns.heatmap(df.corr(),annot=True,cmap='coolwarm')
-# plt.show()
+plt.figure(figsize=(12,8))
+sns.heatmap(df.corr(),annot=True,cmap='coolwarm')
+plt.show()
 
 
 #feature Selection
@@ -113,7 +91,6 @@ print('Confusion Matrix:\n', confusion_matrix(y_test, y_pred))
 
 #random forest
 scale_pos_weight = len(y_train[y_train==0]) / len(y_train[y_train==1])
-
 xgb = XGBClassifier(
     objective='binary:logistic',
     eval_metric='logloss',

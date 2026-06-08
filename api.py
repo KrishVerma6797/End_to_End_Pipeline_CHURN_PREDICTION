@@ -34,21 +34,14 @@ def home():
 
 
 @app.post("/predict")
-def predict(tenure: int,monthly_charges: float,total_charges: float,contract: ContractType,payment_method: PaymentMethod,online_security: OnlineSecurity,tech_support: TechSupport):    
-    sample = pd.DataFrame({
-        "TotalCharges": [total_charges],
-        "MonthlyCharges": [monthly_charges],
-        "tenure": [tenure],
-        "Contract": [contract.value],
-        "PaymentMethod": [payment_method.value],
-        "OnlineSecurity": [online_security.value],
-        "TechSupport": [tech_support.value]
-    })
-
+def predict(Tenure: int,Monthly_Charges: float,Total_Charges: float,contract: ContractType,payment_method: PaymentMethod,online_security: OnlineSecurity,tech_support: TechSupport):    
+    sample = pd.DataFrame({"TotalCharges": [Total_Charges],"MonthlyCharges": [Monthly_Charges],"tenure": [Tenure],"Contract": [contract.value],"PaymentMethod": [payment_method.value],"OnlineSecurity": [online_security.value],"TechSupport": [tech_support.value]})
     for col in ["Contract","PaymentMethod","OnlineSecurity","TechSupport"]:
-        sample[col] = encoders[col].transform(sample[col]         )
+        sample[col] = encoders[col].transform(sample[col])
 
-    sample_scaled = scaler.transform(sample)
+    
+
+    sample_scaled = scaler.transform(sample)    
     prediction = model.predict(sample_scaled)
     probability = model.predict_proba(sample_scaled)[0][1]
 

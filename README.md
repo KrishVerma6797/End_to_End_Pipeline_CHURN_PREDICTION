@@ -106,8 +106,10 @@ Open Swagger UI:
 
 ```text
 http://127.0.0.1:8000/docs
-```
+
 Note: If deployed on a cloud platform, replace `127.0.0.1:8000` with the deployment URL.
+```
+
 ---
 
 ## Project Structure
@@ -128,15 +130,6 @@ Customer-Churn-Prediction/
 
 ---
 
-## Future Improvements
-
-- Streamlit Dashboard
-- Docker Deployment
-- Cloud Deployment (AWS/Azure)
-- SHAP Explainability
-- Real-Time Monitoring
-
----
 
 ## Author
 

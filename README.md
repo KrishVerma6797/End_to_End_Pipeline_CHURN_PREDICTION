@@ -73,8 +73,11 @@ This project predicts whether a telecom customer is likely to churn (leave the s
 
 ### Churn Detection (Best Model)
 
-- Accuracy: 75.15
-- Recall: 78%
+Best Model Performance (Tuned XGBoost)
+
+• Accuracy: 75.16%
+• ROC-AUC Score: 0.8414
+• Recall (Churn Class): 77.8%
 - Business Goal: Maximize churn detection to identify customers likely to leave.
 
 

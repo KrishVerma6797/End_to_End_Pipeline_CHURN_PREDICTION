@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![XGBoost](https://img.shields.io/badge/XGBoost-ML-green)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-success)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+
 ## Overview
 
 This project predicts whether a telecom customer is likely to churn (leave the service) using Machine Learning and XGBoost.

@@ -164,3 +164,31 @@ x_test_df = pd.DataFrame(
     x_test,
     columns=x.columns
 )
+
+
+
+
+from sklearn.metrics import roc_curve, roc_auc_score
+
+y_prob = best_model.predict_proba(x_test)[:,1]
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+auc_score = roc_auc_score(y_test, y_prob)
+plt.figure(figsize=(8,6))
+plt.plot(fpr, tpr, label=f"AUC = {auc_score:.4f}")
+plt.plot([0,1],[0,1],'k--')
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.title("ROC Curve - XGBoost")
+plt.legend()
+plt.show()
+print("ROC-AUC Score:", auc_score)
+
+from sklearn.metrics import roc_auc_score
+
+lr_auc = roc_auc_score(y_test, lr.predict_proba(x_test)[:,1])
+xgb_auc = roc_auc_score(y_test, xgb.predict_proba(x_test)[:,1])
+tuned_auc = roc_auc_score(y_test, best_model.predict_proba(x_test)[:,1])
+
+print("LR ROC-AUC:", lr_auc)
+print("XGB ROC-AUC:", xgb_auc)
+print("Tuned XGB ROC-AUC:", tuned_auc)

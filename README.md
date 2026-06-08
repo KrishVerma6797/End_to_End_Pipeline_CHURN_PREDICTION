@@ -3,10 +3,13 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![XGBoost](https://img.shields.io/badge/XGBoost-ML-green)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-success)
+![Google Cloud](https://img.shields.io/badge/Google_Cloud-Run-blue)
 
 ## Overview
 
-This project predicts whether a telecom customer is likely to churn (leave the service) using Machine Learning and XGBoost.
+This project predicts whether a telecom customer is likely to churn (leave the service) using Machine Learning and XGBoost. The solution includes data preprocessing, model training, hyperparameter tuning, FastAPI deployment, and cloud deployment on Google Cloud Run.
+
+---
 
 ## Features
 
@@ -15,10 +18,11 @@ This project predicts whether a telecom customer is likely to churn (leave the s
 - Feature Selection
 - Feature Scaling
 - Logistic Regression
-- XGBoost
+- XGBoost Classification
 - Hyperparameter Tuning
-- FastAPI Deployment
-- Model Serialization
+- Model Serialization (Joblib)
+- FastAPI REST API
+- Google Cloud Run Deployment
 
 ---
 
@@ -43,6 +47,7 @@ This project predicts whether a telecom customer is likely to churn (leave the s
 - XGBoost
 - FastAPI
 - Joblib
+- Google Cloud Run
 
 ---
 
@@ -58,28 +63,26 @@ This project predicts whether a telecom customer is likely to churn (leave the s
 8. Model Training
 9. Hyperparameter Tuning
 10. Model Evaluation
-11. Model Saving
-12. API Deployment
+11. Model Serialization
+12. API Development
+13. Cloud Deployment
 
 ---
 
 ## Model Performance
 
-| Model | Accuracy |
-|---------|---------|
-| Logistic Regression | 78.42% |
-| XGBoost | 75.23% |
-| Tuned XGBoost | 75.16% |
+| Model | Accuracy | ROC-AUC |
+|---------|---------|---------|
+| Logistic Regression | 78.42% | 83.24% |
+| XGBoost | 75.23% | 81.74% |
+| Tuned XGBoost | 75.16% | 84.14% |
 
-### Churn Detection (Best Model)
+### Best Model Performance (Tuned XGBoost)
 
-Best Model Performance (Tuned XGBoost)
-
-• Accuracy: 75.16%
-• ROC-AUC Score: 0.8414
-• Recall (Churn Class): 77.8%
+- Accuracy: **75.16%**
+- ROC-AUC Score: **84.14%**
+- Recall (Churn Class): **77.8%**
 - Business Goal: Maximize churn detection to identify customers likely to leave.
-
 
 ---
 
@@ -97,9 +100,27 @@ According to XGBoost:
 
 ---
 
+## Live Deployment
+
+### API Endpoint
+
+```text
+https://churn-api-1016947794076.us-central1.run.app
+```
+
+### Swagger Documentation
+
+```text
+https://churn-api-1016947794076.us-central1.run.app/docs
+```
+
+The model is deployed using FastAPI and Google Cloud Run for real-time churn prediction.
+
+---
+
 ## API Usage
 
-Start FastAPI server:
+Run locally:
 
 ```bash
 uvicorn api:app --reload
@@ -109,8 +130,6 @@ Open Swagger UI:
 
 ```text
 http://127.0.0.1:8000/docs
-
-Note: If deployed on a cloud platform, replace `127.0.0.1:8000` with the deployment URL.
 ```
 
 ---
@@ -128,11 +147,21 @@ Customer-Churn-Prediction/
 ├── encoders.pkl
 ├── feature_importance.csv
 ├── requirements.txt
+├── Dockerfile
 └── README.md
 ```
 
 ---
 
+## Future Improvements
+
+- Streamlit Dashboard
+- SHAP Explainability
+- Real-Time Monitoring
+- CI/CD Pipeline
+- Kubernetes Deployment
+
+---
 
 ## Author
 
